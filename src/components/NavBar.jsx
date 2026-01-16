@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import { motion } from 'framer-motion';
 import { NavLink, Link } from 'react-router-dom';
 

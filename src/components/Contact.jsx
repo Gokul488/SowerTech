@@ -1,4 +1,3 @@
-// src/pages/Contact.jsx
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -15,7 +14,6 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // submit logic here (EmailJS / backend / Formspree)
     setFormStatus("success");
     setTimeout(() => setFormStatus(null), 5000);
     e.target.reset();

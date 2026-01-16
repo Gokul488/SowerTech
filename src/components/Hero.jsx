@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const title = "Planting Technology";
@@ -64,31 +65,40 @@ const Hero = () => {
             ambitious startups and businesses grow without limits.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.8 }}
-            className="flex flex-col sm:flex-row gap-5 justify-center items-center"
-          >
-            <motion.a
-              href="#contact"
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 1.8 }}
+                className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+            >
+  {/* Contact Page Button */}
+            <motion.div
               whileHover={{ scale: 1.04, y: -3 }}
               whileTap={{ scale: 0.97 }}
-              className="group relative inline-flex items-center gap-3 bg-[#2ecc71] text-white px-10 py-5 rounded-xl font-semibold text-lg shadow-xl shadow-[#2ecc71]/25 hover:shadow-[#2ecc71]/40 transition-all duration-300"
             >
-              Let's Grow Together
-              <span className="group-hover:translate-x-1.5 transition-transform">→</span>
-            </motion.a>
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center gap-3 bg-[#2ecc71] text-white px-10 py-5 rounded-xl font-semibold text-lg shadow-xl shadow-[#2ecc71]/25 hover:shadow-[#2ecc71]/40 transition-all duration-300"
+              >
+                Let's Grow Together
+                <span className="group-hover:translate-x-1.5 transition-transform">→</span>
+              </Link>
+            </motion.div>
 
-            <motion.a
-              href="#services"
+            {/* Services Page Button */}
+            <motion.div
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center px-10 py-5 rounded-xl font-medium text-lg border-2 border-gray-800/30 hover:bg-gray-800/5 text-gray-900 hover:text-gray-900 transition-all duration-300"
             >
-              Explore Services
-            </motion.a>
+              <Link
+                to="/services"
+                className="inline-flex items-center px-10 py-5 rounded-xl font-medium text-lg border-2 border-gray-800/30 hover:bg-gray-800/5 text-gray-900 hover:text-gray-900 transition-all duration-300"
+              >
+                Explore Services
+              </Link>
+            </motion.div>
           </motion.div>
+
         </div>
       </div>
     </section>
