@@ -14,7 +14,7 @@ const navItems = [
 
 export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
   return (
-    <nav className="bg-[#0a192f] text-white sticky top-0 z-50 shadow-xl backdrop-blur-sm bg-opacity-95">
+    <nav className="bg-[#0a192f] text-white top-0 z-50 shadow-xl backdrop-blur-sm bg-opacity-95 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           
@@ -74,19 +74,19 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4 }}
-            className="md:hidden mt-6 pb-6 border-t border-gray-800/50"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="md:hidden absolute left-0 right-0 top-full bg-[#0a192f] border-t border-gray-800/50 shadow-2xl"
           >
-            <div className="flex flex-col space-y-5 text-left text-lg">
+            <div className="flex flex-col space-y-5 px-6 py-6 text-left text-lg">
               {navItems.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.to}
                   className={({ isActive }) =>
-                    `py-3 transition-colors font-medium ${
+                    `py-2 font-medium transition-colors ${
                       isActive
                         ? 'text-[#2ecc71]'
                         : 'text-gray-300 hover:text-[#2ecc71]'
@@ -100,6 +100,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
             </div>
           </motion.div>
         )}
+
       </div>
     </nav>
   );
