@@ -12,12 +12,34 @@ import {
 export default function Contact() {
   const [formStatus, setFormStatus] = useState(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormStatus("success");
-    setTimeout(() => setFormStatus(null), 5000);
-    e.target.reset();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const formData = {
+    name: e.target[0].value,
+    email: e.target[1].value,
+    message: e.target[2].value,
   };
+
+  try {
+    const res = await fetch('http://localhost:5000/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) throw new Error('Failed');
+
+    setFormStatus('success');
+    e.target.reset();
+    setTimeout(() => setFormStatus(null), 5000);
+  } catch (err) {
+    alert('Something went wrong. Try again later.');
+  }
+};
+
 
   return (
     <section
